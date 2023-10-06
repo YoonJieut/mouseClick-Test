@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./app.js" defer></script>
+  <style>
+    *{margin:0; padding: 0; box-sizing: border-box;}
+    #root {
+      width: 100vw;
+      height: 100vh;
+      background-color: #999;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #container {
+      outline: 1px solid black;
+      display: flex;
+    }
+    #gameArea {
+      width: 50vw;
+      height: 80vh;
+      background-color: #fff;
+    }
+    #subArea {
+      width: 20vw;
+      height: 80vh;
+      background-color: #fff;
+      margin-left: 15px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div id="container">
+      <div id="gameArea"></div>
+      <div id="subArea"></div>
+    </div>
+  </div>
+</body>
+</html>
