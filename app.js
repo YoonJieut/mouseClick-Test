@@ -4,8 +4,8 @@ const gameArea = document.getElementById('gameArea');
 const dotList = document.getElementsByClassName('dotTarget');
 
 // 숫자 타입으로 최대값 변수 선언
-let numWMax = parseInt(gameArea.clientWidth);
-let numHMax = parseInt(gameArea.clientHeight);
+let numWMax = parseInt(gameArea.clientWidth-20);
+let numHMax = parseInt(gameArea.clientHeight-20);
 
 console.log( numHMax, numWMax)
 console.log(ramdomNumber(0, numHMax))
@@ -18,8 +18,8 @@ for(i=0; i<3; i++){
   let someDot = document.createElement('div')
   gameArea.appendChild(someDot);
   someDot.className = "dotTarget";
-  someDot.style.left = `${ramdomNumber(0, numWMax)}`;
-  someDot.style.top = `${ramdomNumber(0, numHMax)}`;
+  someDot.style.left = `${ramdomNumber(0, numWMax)}px`;
+  someDot.style.top = `${ramdomNumber(0, numHMax)}px`;
 }
 // console.log(dotList);
 
