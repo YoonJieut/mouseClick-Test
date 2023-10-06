@@ -34,11 +34,13 @@ function addDot(){
 // * container 클릭 이벤트
 // 클릭하면 삭제되는 로직
 gameArea.addEventListener('click',function(eventTarget){
-  eventTarget.target.remove();
-  // ? 랜덤 생성 모듈 들어갈 자리
-  addDot()
-
-
+  console.log(eventTarget);
+  if(eventTarget.target === "div.dotTarget"){
+    eventTarget.target.remove();
+    
+    // ? 랜덤 생성 모듈 들어갈 자리
+    addDot()
+  }
 });
 
 // * 랜덤 모듈 --------------------------
@@ -72,8 +74,16 @@ function ramdomNumber(min, max) {
 // * 입력값 setTimeout 시간 세팅
 
 // * clear 함수
+// gameArea 안의 모든 것을 지웁니다.
+start.addEventListener('click',function(){
 
+});
 
+function removeAll(){
+  for(i=0;i<gameArea.children.length; i++){
+    gameArea.removeChild()
+  }
+};
 
 
 
