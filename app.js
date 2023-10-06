@@ -46,12 +46,14 @@ function ramdomNumber(min, max) {
   // ramdom은 0~1 난수, 벙위를 곱하면 범위 내의 랜덤 숫자가 나오고, 최소 값을 더해주면 된다.
 }
 
-// * gameArea의 값 추출
+// * gameArea의 값 추출의 필요성
+// ? 어떻게하지 관련된 객체 값이 있을까? - clientWidth, clientLeft
 // 가로 범위 0~ gameArea.clientWidth
 // 세로 범위 0 ~ gameArea.clientHeight
-
 // gameArea.clientLeft - 좌표값
 // gameArea.clientTop - 좌표값
+
+
 
 
 
