@@ -3,18 +3,22 @@ console.log('hello');
 const gameArea = document.getElementById('gameArea');
 const dotList = document.getElementsByClassName('dotTarget');
 
-// 숫자 타입으로 최대값 변수 선언
+// 랜덤 정수를 위한 숫자 타입으로 최대값-dotTarget크기 변수 선언
 let numWMax = parseInt(gameArea.clientWidth-20);
 let numHMax = parseInt(gameArea.clientHeight-20);
 
-console.log( numHMax, numWMax)
-console.log(ramdomNumber(0, numHMax))
+// console.log( numHMax, numWMax)
+// console.log(ramdomNumber(0, numHMax))
 // console.log(gameArea);
 console.dir(gameArea);
 
 
-// * 3개의 .dotTarget 추가 로직
+// * 초기 3개 세팅
 for(i=0; i<3; i++){
+  addDot();
+}
+// * .dotTarget 추가 로직
+function addDot(){
   let someDot = document.createElement('div')
   gameArea.appendChild(someDot);
   someDot.className = "dotTarget";
@@ -28,6 +32,7 @@ for(i=0; i<3; i++){
 gameArea.addEventListener('click',function(eventTarget){
   eventTarget.target.remove();
   // ? 랜덤 생성 모듈 들어갈 자리
+  addDot()
 });
 
 // * 랜덤 모듈 --------------------------
