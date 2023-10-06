@@ -19,4 +19,11 @@ gameArea.addEventListener('click',function(eventTarget){
   // ? 랜덤 생성 모듈 들어갈 자리
 });
 
-// * 랜덤 모듈
+// * 랜덤 모듈 --------------------------
+// 랜덤 함수
+function ramdomNumber(min, max) {
+  min = Math.ceil(min);
+  // ceil - 올림
+  max = Math.floor(max);
+  // floor - 내림
+}
