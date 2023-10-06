@@ -2,6 +2,9 @@ console.log('hello');
 
 const gameArea = document.getElementById('gameArea');
 const dotList = document.getElementsByClassName('dotTarget');
+const start = document.getElementById('startButton');
+const userInput = document.getElementById('userInput');
+const rank = document.getElementById('rank');
 
 // 랜덤 정수를 위한 숫자 타입으로 최대값-dotTarget크기 변수 선언
 let numWMax = parseInt(gameArea.clientWidth-20);
@@ -63,6 +66,13 @@ function ramdomNumber(min, max) {
 // if( gameArea.children.length === 2){
 //   temp++;
 // }
+
+
+
+// * 입력값 setTimeout 시간 세팅
+
+// * clear 함수
+
 
 
 
