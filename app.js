@@ -26,4 +26,7 @@ function ramdomNumber(min, max) {
   // ceil - 올림
   max = Math.floor(max);
   // floor - 내림
+  return Math.floor(Math.random() * (max - min)+min);
+  // ramdom은 0~1 난수, 벙위를 곱하면 범위 내의 랜덤 숫자가 나오고, 최소 값을 더해주면 된다.
+
 }
