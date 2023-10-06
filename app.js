@@ -27,6 +27,7 @@ function addDot(){
 }
 // console.log(dotList);
 
+
 // * container 클릭 이벤트
 // 클릭하면 삭제되는 로직
 gameArea.addEventListener('click',function(eventTarget){
@@ -53,8 +54,13 @@ function ramdomNumber(min, max) {
 // gameArea.clientLeft - 좌표값
 // gameArea.clientTop - 좌표값
 
+// * 사라지면 score 로직 추가
+const scoreList =[];
 
-
+let temp = 0;
+if( gameArea.children.length === 2){
+  temp++;
+}
 
 
 
