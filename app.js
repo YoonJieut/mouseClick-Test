@@ -17,7 +17,7 @@ console.dir(gameArea);
 for(i=0; i<3; i++){
   addDot();
 }
-// * .dotTarget 추가 로직
+// * .dotTarget 랜덤 +추가 로직
 function addDot(){
   let someDot = document.createElement('div')
   gameArea.appendChild(someDot);
@@ -34,6 +34,8 @@ gameArea.addEventListener('click',function(eventTarget){
   eventTarget.target.remove();
   // ? 랜덤 생성 모듈 들어갈 자리
   addDot()
+
+
 });
 
 // * 랜덤 모듈 --------------------------
@@ -55,12 +57,13 @@ function ramdomNumber(min, max) {
 // gameArea.clientTop - 좌표값
 
 // * 사라지면 score 로직 추가
-const scoreList =[];
+// const scoreList =[];
 
-let temp = 0;
-if( gameArea.children.length === 2){
-  temp++;
-}
+// let temp = 0;
+// if( gameArea.children.length === 2){
+//   temp++;
+// }
+
 
 
 
