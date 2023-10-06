@@ -38,3 +38,10 @@ function ramdomNumber(min, max) {
 
 // gameArea.clientLeft - 좌표값
 // gameArea.clientTop - 좌표값
+
+// 숫자 타입으로 최대값 변수 설정
+let numWMax = parseInt(gameArea.clientWidth);
+let numHMax = parseInt(gameArea.clientHeight);
+
+  gameArea.clientLeft = ramdomNumber(0, numWMax);
+  gameArea.clientTop = ramdomNumber(0, numHMax);
