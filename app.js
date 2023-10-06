@@ -7,6 +7,8 @@ const dotList = document.getElementsByClassName('dotTarget');
 let numWMax = parseInt(gameArea.clientWidth);
 let numHMax = parseInt(gameArea.clientHeight);
 
+console.log( numHMax, numWMax)
+console.log(ramdomNumber(0, numHMax))
 // console.log(gameArea);
 console.dir(gameArea);
 
@@ -16,7 +18,8 @@ for(i=0; i<3; i++){
   let someDot = document.createElement('div')
   gameArea.appendChild(someDot);
   someDot.className = "dotTarget";
-  // someDot.style.left = 
+  someDot.style.left = `${ramdomNumber(0, numWMax)}`;
+  someDot.style.top = `${ramdomNumber(0, numHMax)}`;
 }
 // console.log(dotList);
 
@@ -34,7 +37,7 @@ function ramdomNumber(min, max) {
   // ceil - 올림
   max = Math.floor(max);
   // floor - 내림
-  return Math.floor(Math.random() * (max - min)+min);
+  return parseInt(Math.floor(Math.random() * (max - min)+min))
   // ramdom은 0~1 난수, 벙위를 곱하면 범위 내의 랜덤 숫자가 나오고, 최소 값을 더해주면 된다.
 }
 
@@ -48,5 +51,3 @@ function ramdomNumber(min, max) {
 
 
 
-  gameArea.clientLeft = ramdomNumber(0, numWMax);
-  gameArea.clientTop = ramdomNumber(0, numHMax);
