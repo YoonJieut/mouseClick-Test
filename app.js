@@ -16,6 +16,7 @@ for(i=0; i<3; i++){
 console.log(dotList);
 
 // * container 클릭 이벤트
-gameArea.addEventListener('click',function(target){
-  console.log(target);
+gameArea.addEventListener('click',function(eventTarget){
+  eventTarget.target.remove();
+  // ? 랜덤 생성 모듈 들어갈 자리
 });
