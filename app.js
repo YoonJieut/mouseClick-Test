@@ -65,8 +65,9 @@ for(i=0; i<3; i++){
 // 클릭하면 삭제되는 로직
 gameArea.addEventListener('click',function(eventTarget){
   // console.log(eventTarget);
-  console.log(eventTarget.target.className);
+  // console.log(eventTarget.target.className);
   if(eventTarget.target.className ==="dotTarget"){
+    console.log(eventTarget);
     eventTarget.target.remove();
     
     // ? 랜덤 생성 모듈 들어갈 자리
@@ -100,12 +101,19 @@ start.addEventListener('click',function(){
 
 function removeAll(){
   console.log('removeAll 시작');
-  for(i=0;i<gameArea.children.length; i++){
-    if(gameArea.lastChild === "div.dotTarget"){
-      gameArea.removeChild(dotList[i]);
-    }
+  // for(i=0;i<gameArea.children.length; i++){
+  //   console.log( gameArea.children.length);
+  //   console.log( gameArea.children[i]);
+  //   gameArea.children[0].remove();
+  // }
+
+  while(0<gameArea.children.length){
+    gameArea.children[0].remove();
   }
   console.log('removeAll 종료');
+
+  // ? length 3개만큼 지우는 것이 아니라, 2개만 지워지는 현상을 발견
+  // ! for문 안의 gameArea.children.length도 계속 동적으로 변하기 때문에 생긴 오류로, while 문을 사용해서 해결하고자 한다.
 };
 
 
