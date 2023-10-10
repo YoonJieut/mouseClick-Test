@@ -71,45 +71,46 @@ function removeAll(){
 
 // * container 클릭 이벤트
 // * 본 게임 로직 : 삭제, score 반영, 랜덤 생성
-function gameStart(){
-  gameArea.addEventListener('click',function(eventTarget){
-    // console.log(eventTarget);
-    // console.log(eventTarget.target.className);
-    if(eventTarget.target.className ==="dotTarget"){
-      console.log(eventTarget);
-      eventTarget.target.remove();
-      
-      // 
-      temp++;
-      classList[1].textContent = "Score : "+temp;
-      // 랜덤 생성 모듈
-      addDot()
-    } else {
-      console.log('잘못 누르셨습니다.')
-    }
-  });
-};
-// ! 껏다 키자 삭제 로직이 작동하지 안하, if문의 조건식을 eventTarget.target === "div.dotTarget"에서 eventTarget.target.className ==="dotTarget" 으로 수정함
+// ! 로직 항상 구동, if문으로 작동하도록 함.
+
+gameArea.addEventListener('click',function(eventTarget){
+  // console.log(eventTarget);
+  // console.log(eventTarget.target.className);
+  if(eventTarget.target.className ==="dotTarget"){
+    console.log(eventTarget);
+    eventTarget.target.remove();
+    
+    // 
+    temp++;
+    classList[1].textContent = "Score : "+temp;
+    // 랜덤 생성 모듈
+    addDot()
+  } else {
+    console.log('잘못 누르셨습니다.')
+  }
+});
+
+ // ! 껏다 키자 삭제 로직이 작동하지 안하, if문의 조건식을 eventTarget.target === "div.dotTarget"에서 eventTarget.target.className ==="dotTarget" 으로 수정함
 
 
-function gameEnd(){
-  gameArea.removeEventListener('click',function(eventTarget){
-    // console.log(eventTarget);
-    // console.log(eventTarget.target.className);
-    if(eventTarget.target.className ==="dotTarget"){
-      console.log(eventTarget);
-      eventTarget.target.remove();
+// function gameEnd(){
+//   gameArea.removeEventListener('click',function(eventTarget){
+//     // console.log(eventTarget);
+//     // console.log(eventTarget.target.className);
+//     if(eventTarget.target.className ==="dotTarget"){
+//       console.log(eventTarget);
+//       eventTarget.target.remove();
       
-      // 
-      temp++;
-      classList[1].textContent = "Score : "+temp;
-      // 랜덤 생성 모듈
-      addDot()
-    } else {
-      console.log('잘못 누르셨습니다.')
-    }
-  });
-};
+//       // 
+//       temp++;
+//       classList[1].textContent = "Score : "+temp;
+//       // 랜덤 생성 모듈
+//       addDot()
+//     } else {
+//       console.log('잘못 누르셨습니다.')
+//     }
+//   });
+// };
 
 
 
@@ -140,13 +141,13 @@ start.addEventListener('click',function(){
   for(i=0; i<3; i++){
     addDot();
   }
-  gameStart()
+
   // * 입력값 setTimeout 시간 세팅 이후 clear 함수 실행
   // 일정 시간 후 : 모든 자식 요소 삭제, removeEventListener 실행, rank 비교 및 반영, temp 초기화
   setTimeout(function(){
     console.log('setTimeout 실행됨');
     removeAll();
-    gameEnd();
+
 
     // * rank 비교 로직
     if(bestScore < temp ) {
@@ -163,6 +164,7 @@ start.addEventListener('click',function(){
   },userInput.value*1000);
 });
 // ! 로직이 중복되어 점수가 배수로 오르는 버그 발견, gameEnd 가 작동하지 않는 것으로 보임
+// ? 해결 : 로직 항상 구동, if문으로 작동하도록 함.
 
 
 
