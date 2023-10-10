@@ -6,6 +6,7 @@ const start = document.getElementById('startButton');
 const userInput = document.getElementById('userInput');
 const rank = document.getElementById('rank');
 
+
 // 랜덤 정수를 위한 숫자 타입으로 최대값-dotTarget크기 변수 선언
 let numWMax = parseInt(gameArea.clientWidth-20);
 let numHMax = parseInt(gameArea.clientHeight-20);
@@ -48,7 +49,24 @@ function addDot(){
 }
 // console.log(dotList);
 
+// * removeAll 함수
+// gameArea 안의 모든 것을 지웁니다.
+function removeAll(){
+  // console.log('removeAll 시작');
+  while(0<gameArea.children.length){
+    gameArea.children[0].remove();
+  }
+  // console.log('removeAll 종료');
 
+
+    // for(i=0;i<gameArea.children.length; i++){
+  //   console.log( gameArea.children.length);
+  //   console.log( gameArea.children[i]);
+  //   gameArea.children[0].remove();
+  // }
+  // ? length 3개만큼 지우는 것이 아니라, 2개만 지워지는 현상을 발견
+  // ! for문 안의 gameArea.children.length도 계속 동적으로 변하기 때문에 생긴 오류로, while 문을 사용해서 해결하고자 한다.
+};
 
 
 
@@ -56,13 +74,20 @@ function addDot(){
 //* 로직 파트 및 이벤트 리스터 파트 ---------------------------------
 
 
-// * 초기 3개 세팅
-for(i=0; i<3; i++){
-  addDot();
-}
+
+
+// * 사라지면 score 로직 추가
+const bestScore =0;
+
+const classList = document.getElementsByClassName('test');
+
+
 
 // * container 클릭 이벤트
 // 클릭하면 삭제되는 로직
+
+let temp = 0;
+
 gameArea.addEventListener('click',function(eventTarget){
   // console.log(eventTarget);
   // console.log(eventTarget.target.className);
@@ -71,6 +96,8 @@ gameArea.addEventListener('click',function(eventTarget){
     eventTarget.target.remove();
     
     // ? 랜덤 생성 모듈 들어갈 자리
+    temp++;
+    classList[1].textContent = temp;
     addDot()
   } else {
     console.log('잘못 누르셨습니다.')
@@ -79,42 +106,40 @@ gameArea.addEventListener('click',function(eventTarget){
 // ! 껏다 키자 삭제 로직이 작동하지 안하, if문의 조건식을 eventTarget.target === "div.dotTarget"에서 eventTarget.target.className ==="dotTarget" 으로 수정함
 
 
-// * 사라지면 score 로직 추가
-// const scoreList =[];
-
-// let temp = 0;
-// if( gameArea.children.length === 2){
-//   temp++;
-// }
 
 
 
-// * 입력값 setTimeout 시간 세팅
 
 
-// * clear 함수
-// gameArea 안의 모든 것을 지웁니다.
+// * 시작 버튼 누를 시, temp 초기화 및 bestScore를 비교하여 남김
+// * best rank 비교 연산자
+// * 클릭 -> inputValue만큼 게임이 실행(3개의 닷이 생김), 작동된 동안 스코어를 게시 -> removeAll을 하며 종료
+
 start.addEventListener('click',function(){
   console.log("start 버튼 누름");
-  removeAll();
+  console.log(userInput.value);
+
+  // * rank 비교 로직
+  if(bestScore < temp ) {
+    classList[0].textContent = "Best Rank : " +temp;
+  }
+  //* 템프 초기화 로직
+  temp = 0;
+  classList[1].textContent = temp;
+  console.log(temp, "템프 초기화");
+
+  // * 초기 3개 세팅
+  for(i=0; i<3; i++){
+    addDot();
+  }
+
+  // * 입력값 setTimeout 시간 세팅 이후 clear 함수 실행
+  setTimeout(function(){
+    console.log('setTimeout 실행됨');
+
+  },userInput.value*1000);
 });
 
-function removeAll(){
-  console.log('removeAll 시작');
-  // for(i=0;i<gameArea.children.length; i++){
-  //   console.log( gameArea.children.length);
-  //   console.log( gameArea.children[i]);
-  //   gameArea.children[0].remove();
-  // }
-
-  while(0<gameArea.children.length){
-    gameArea.children[0].remove();
-  }
-  console.log('removeAll 종료');
-
-  // ? length 3개만큼 지우는 것이 아니라, 2개만 지워지는 현상을 발견
-  // ! for문 안의 gameArea.children.length도 계속 동적으로 변하기 때문에 생긴 오류로, while 문을 사용해서 해결하고자 한다.
-};
 
 
 
