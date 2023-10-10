@@ -5,6 +5,7 @@ const dotList = document.getElementsByClassName('dotTarget');
 const start = document.getElementById('startButton');
 const userInput = document.getElementById('userInput');
 const rank = document.getElementById('rank');
+const classList = document.getElementsByClassName('test');
 
 
 // 랜덤 정수를 위한 숫자 타입으로 최대값-dotTarget크기 변수 선언
@@ -68,77 +69,100 @@ function removeAll(){
   // ! for문 안의 gameArea.children.length도 계속 동적으로 변하기 때문에 생긴 오류로, while 문을 사용해서 해결하고자 한다.
 };
 
+// * container 클릭 이벤트
+// * 본 게임 로직 : 삭제, score 반영, 랜덤 생성
+function gameStart(){
+  gameArea.addEventListener('click',function(eventTarget){
+    // console.log(eventTarget);
+    // console.log(eventTarget.target.className);
+    if(eventTarget.target.className ==="dotTarget"){
+      console.log(eventTarget);
+      eventTarget.target.remove();
+      
+      // 
+      temp++;
+      classList[1].textContent = "Score : "+temp;
+      // 랜덤 생성 모듈
+      addDot()
+    } else {
+      console.log('잘못 누르셨습니다.')
+    }
+  });
+};
+// ! 껏다 키자 삭제 로직이 작동하지 안하, if문의 조건식을 eventTarget.target === "div.dotTarget"에서 eventTarget.target.className ==="dotTarget" 으로 수정함
+
+
+function gameEnd(){
+  gameArea.removeEventListener('click',function(eventTarget){
+    // console.log(eventTarget);
+    // console.log(eventTarget.target.className);
+    if(eventTarget.target.className ==="dotTarget"){
+      console.log(eventTarget);
+      eventTarget.target.remove();
+      
+      // 
+      temp++;
+      classList[1].textContent = "Score : "+temp;
+      // 랜덤 생성 모듈
+      addDot()
+    } else {
+      console.log('잘못 누르셨습니다.')
+    }
+  });
+};
+
+
+
+
 
 
 
 //* 로직 파트 및 이벤트 리스터 파트 ---------------------------------
 
-
-
-
-// * 사라지면 score 로직 추가
-const bestScore =0;
-
-const classList = document.getElementsByClassName('test');
-
-
-
-// * container 클릭 이벤트
-// 클릭하면 삭제되는 로직
-
+let bestScore =0;
 let temp = 0;
-
-gameArea.addEventListener('click',function(eventTarget){
-  // console.log(eventTarget);
-  // console.log(eventTarget.target.className);
-  if(eventTarget.target.className ==="dotTarget"){
-    console.log(eventTarget);
-    eventTarget.target.remove();
-    
-    // ? 랜덤 생성 모듈 들어갈 자리
-    temp++;
-    classList[1].textContent = temp;
-    addDot()
-  } else {
-    console.log('잘못 누르셨습니다.')
-  }
-});
-// ! 껏다 키자 삭제 로직이 작동하지 안하, if문의 조건식을 eventTarget.target === "div.dotTarget"에서 eventTarget.target.className ==="dotTarget" 으로 수정함
-
-
-
-
-
 
 
 // * 시작 버튼 누를 시, temp 초기화 및 bestScore를 비교하여 남김
 // * best rank 비교 연산자
 // * 클릭 -> inputValue만큼 게임이 실행(3개의 닷이 생김), 작동된 동안 스코어를 게시 -> removeAll을 하며 종료
 
+
 start.addEventListener('click',function(){
   console.log("start 버튼 누름");
   console.log(userInput.value);
 
-  // * rank 비교 로직
-  if(bestScore < temp ) {
-    classList[0].textContent = "Best Rank : " +temp;
-  }
-  //* 템프 초기화 로직
-  temp = 0;
-  classList[1].textContent = temp;
-  console.log(temp, "템프 초기화");
+  // //* 템프 초기화 로직
+  // temp = 0;
+  // console.log(temp, "템프 초기화");
 
   // * 초기 3개 세팅
   for(i=0; i<3; i++){
     addDot();
   }
-
+  gameStart()
   // * 입력값 setTimeout 시간 세팅 이후 clear 함수 실행
+  // 일정 시간 후 : 모든 자식 요소 삭제, removeEventListener 실행, rank 비교 및 반영, temp 초기화
   setTimeout(function(){
     console.log('setTimeout 실행됨');
+    removeAll();
+    gameEnd();
+
+    // * rank 비교 로직
+    if(bestScore < temp ) {
+      console.log('rank비교로직 참')
+      classList[0].textContent = "Best Rank : " + temp +", "+ userInput.value+"초";
+    } else {
+      console.log('rank비교로직 불')
+    }
+
+    // temp 초기화
+    temp = 0;
+    console.log(temp, "템프 초기화");
 
   },userInput.value*1000);
 });
+// ! 로직이 중복되어 점수가 배수로 오르는 버그 발견, gameEnd 가 작동하지 않는 것으로 보임
 
 
 
